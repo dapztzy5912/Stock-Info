@@ -1,0 +1,184 @@
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #388E3C;
+    --accent-color: #8BC34A;
+    --text-color: #333;
+    --light-text: #f5f5f5;
+    --background: #f9f9f9;
+    --card-bg: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.header h1 {
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.update-time {
+    font-size: 0.9em;
+    color: #666;
+    text-align: right;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+    transition: all 0.3s;
+}
+
+.tab-button:hover {
+    color: var(--primary-color);
+}
+
+.tab-button.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.stock-section {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.stock-section h3 {
+    margin-top: 0;
+    color: var(--secondary-color);
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.stock-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.stock-list li {
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.stock-list li:last-child {
+    border-bottom: none;
+}
+
+.stock-list .empty {
+    color: #999;
+    font-style: italic;
+}
+
+.weather-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.weather-card {
+    flex: 1;
+    min-width: 300px;
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+}
+
+.weather-card h3 {
+    margin-top: 0;
+    color: var(--secondary-color);
+}
+
+.notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.notification {
+    background: var(--primary-color);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.5s, fadeOut 0.5s 4.5s forwards;
+    cursor: pointer;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px 0;
+    color: #666;
+    font-size: 0.9em;
+    border-top: 1px solid #eee;
+}
+
+@media (max-width: 768px) {
+    .weather-info {
+        flex-direction: column;
+    }
+    
+    .tab-button {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
