@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/header') %>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🌱 Grow a Garden Info</h1>
+            <p>Real-time stock and weather information</p>
+        </header>
+
+        <div class="notification-container" id="notificationContainer"></div>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab('stock')">Stock Info</button>
+            <button class="tab-button" onclick="openTab('weather')">Weather Info</button>
+        </div>
+
+        <div id="stock" class="tab-content" style="display: block;">
+            <h2>🛒 Current Stock</h2>
+            <p class="update-time">Last updated: <%= stockData.timestamp %></p>
+            
+            <div class="stock-section">
+                <h3>🪴 Seed Shop</h3>
+                <ul class="stock-list">
+                    <% if (stockData.seedStocks.length > 0) { %>
+                        <% stockData.seedStocks.forEach(item => { %>
+                            <li>[<%= item.stock %>x] <%= item.name %></li>
+                        <% }); %>
+                    <% } else { %>
+                        <li class="empty">No stock available</li>
+                    <% } %>
+                </ul>
+            </div>
+
+            <div class="stock-section">
+                <h3>🛠️ Gear Shop</h3>
+                <ul class="stock-list">
+                    <% if (stockData.gearStocks.length > 0) { %>
+                        <% stockData.gearStocks.forEach(item => { %>
+                            <li>[<%= item.stock %>x] <%= item.name %></li>
+                        <% }); %>
+                    <% } else { %>
+                        <li class="empty">No stock available</li>
+                    <% } %>
+                </ul>
+            </div>
+
+            <div class="stock-section">
+                <h3>🥚 Egg Shop</h3>
+                <ul class="stock-list">
+                    <% if (stockData.eggStocks.length > 0) { %>
+                        <% stockData.eggStocks.forEach(item => { %>
+                            <li>[<%= item.stock %>x] <%= item.name %></li>
+                        <% }); %>
+                    <% } else { %>
+                        <li class="empty">No stock available</li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+
+        <div id="weather" class="tab-content">
+            <h2>🌦️ Current Weather</h2>
+            <p class="update-time">Last updated: <%= weatherData.timestamp %></p>
+            
+            <div class="weather-info">
+                <div class="weather-card">
+                    <h3>Current Conditions</h3>
+                    <p><%= weatherData.currentWeather %></p>
+                    <p><%= weatherData.temperature %></p>
+                    <p><%= weatherData.humidity %></p>
+                    <p><%= weatherData.wind %></p>
+                </div>
+
+                <div class="weather-card">
+                    <h3>Forecast</h3>
+                    <p><%= weatherData.forecast %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>
+    <script src="/js/script.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</body>
+</html>
